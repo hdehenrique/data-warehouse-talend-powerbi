@@ -1,0 +1,23 @@
+{
+  "itemId" : "_hChQUPuYEe-zrOrK0fQTjQ",
+  "contextList" : [ {
+    "contextName" : "Default",
+    "repoId" : "_9AQj4B43Ee2WMOY45k2Ahw",
+    "parameterList" : [ {
+      "id" : "_e0KlFArOEe6_haFX08IUvw",
+      "name" : "AUTCOM_DB"
+    }, {
+      "id" : "_e0KlEQrOEe6_haFX08IUvw",
+      "name" : "AUTCOM_HOST"
+    }, {
+      "id" : "_e0KlEwrOEe6_haFX08IUvw",
+      "name" : "AUTCOM_PASSWORD"
+    }, {
+      "id" : "_e0KlFQrOEe6_haFX08IUvw",
+      "name" : "AUTCOM_PORT"
+    }, {
+      "id" : "_e0KlEgrOEe6_haFX08IUvw",
+      "name" : "AUTCOM_USER"
+    } ]
+  } ]
+}

@@ -1,0 +1,635 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 71,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "cd0d804d-247f-4e14-863d-cee8641c1867"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "min": 0,
+          "noValue": "FATURAMENTO/VENDAS",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#450552"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "valueSize": 25
+        },
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "dataset": "glpidb",
+          "datasource": {
+            "type": "mysql",
+            "uid": "cd0d804d-247f-4e14-863d-cee8641c1867"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "",
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "dark-green"
+              }
+            ]
+          },
+          "unit": "currencyBRL"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 18,
+        "x": 0,
+        "y": 2
+      },
+      "id": 8,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "/^FATURAMENTO$/",
+          "values": true
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "dataset": "AUTCOM",
+          "datasource": {
+            "type": "mysql",
+            "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": " SELECT CANAL_FATURAMENTO.CANAL,\r\n       SUM(CANAL_FATURAMENTO.TOTAL_VENDA) AS FATURAMENTO\r\n       FROM (\r\n       SELECT \r\n          SUM(FAT.TOTAL_VENDA) AS TOTAL_VENDA ,\r\n          CASE \r\n\t\t\tWHEN OPE_CODDEP =\t'001'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'004'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'006'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'007'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'008'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'009'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'010'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'011'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'012'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'013'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'015'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'019'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'020'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'021'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'022'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'023'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'024'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'026'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'027'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'028'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'029'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'030'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'033'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'034'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'035'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'036'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'037'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'038'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'039'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'040'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'041'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'042'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'043'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'044'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'045'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'046'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'047'\tTHEN\t'LOJA/BALCÃO'\r\n\t\t\tWHEN OPE_CODDEP =\t'002'\tTHEN\t'TELEVENDAS'\r\n\t\t\tWHEN OPE_CODDEP =\t'003'\tTHEN\t'ECOMMERCE'\r\n\t\t\tWHEN OPE_CODDEP =\t'016'\tTHEN\t'ECOMMERCE'\r\n\t\t\tWHEN OPE_CODDEP =\t'005'\tTHEN\t'DIGITAL'\r\n\t\t\tWHEN OPE_CODDEP =\t'014'\tTHEN\t'DIGITAL'\r\n\t\t\tWHEN OPE_CODDEP =\t'031'\tTHEN\t'DIGITAL'\r\n\t\t\tWHEN OPE_CODDEP =\t'032'\tTHEN\t'DIGITAL'\r\n\t\t\tELSE 'CANAL DESCONHECIDO'       \t\r\n          END AS CANAL          \r\n     FROM VW_FATURAMENTO FAT\r\nLEFT JOIN CADOPE CO ON FAT.COD_VENDEDOR = CO.OPE_CODOPE  \r\nLEFT JOIN CADDEP CD ON CO.OPE_CODDEP = CD.DEP_CODIGO\r\n    WHERE $__timeFilter(DATA_E_HORA)\r\n   GROUP BY CO.OPE_CODDEP\r\nUNION ALL\r\nSELECT SUM(FAT.TOTAL_VENDA) AS TOTAL_VENDA ,\r\n       'ECOMMERCE' AS CANAL\r\n  FROM VW_FATURAMENTO FAT\r\nLEFT JOIN CADOPE CO ON FAT.COD_VENDEDOR = CO.OPE_CODOPE  \r\nLEFT JOIN CADDEP CD ON CO.OPE_CODDEP = CD.DEP_CODIGO\r\nWHERE $__timeFilter(DATA_E_HORA)\r\n      AND CO.OPE_CODOPE = 'A27') AS CANAL_FATURAMENTO\r\n           GROUP BY CANAL_FATURAMENTO.CANAL",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Faturamento por canal",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-RdYlGr"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red"
+              },
+              {
+                "color": "green",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyBRL"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 18,
+        "y": 2
+      },
+      "id": 11,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": true
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "dataset": "AUTCOM",
+          "datasource": {
+            "type": "mysql",
+            "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT CASE \r\n\tWHEN EMPRESA = '002' THEN 'AV. BRASIL'\r\n\tWHEN EMPRESA =  '006' THEN 'MATRIZ'\r\n\tWHEN EMPRESA =  '008' THEN 'ITU'\r\n\tWHEN EMPRESA =  '009' THEN 'SÃO JOSÉ DO RIO PRETO'\r\nEND AS EMPRESA,\r\n       SUM(TOTAL_VENDA) AS TOTAL\r\n  FROM VW_FATURAMENTO\r\n WHERE EMPRESA IN ('002','006','008','009')\r\n  AND $__timeFilter(DATA_E_HORA)\r\n  GROUP BY EMPRESA\r\n  order by SUM(TOTAL_VENDA) desc;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Faturamento Lojas Físicas",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "left",
+            "cellOptions": {
+              "type": "gauge",
+              "valueDisplayMode": "text"
+            },
+            "filterable": false,
+            "inspect": false,
+            "minWidth": 150,
+            "width": 150
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyBRL"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Faturamento"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 120
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Estoque"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 90
+              },
+              {
+                "id": "unit",
+                "value": "none"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Produto"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 780
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 13,
+        "x": 0,
+        "y": 9
+      },
+      "id": 9,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": true
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "dataset": "AUTCOM",
+          "datasource": {
+            "type": "mysql",
+            "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "   SELECT CONCAT(FAT.COD_ITEM ,' - ', FAT.ITEM) AS Produto,\r\n          SUM(FAT.TOTAL_VENDA) AS Faturamento,\r\n          (   SELECT  SUM(IG.ITE_SALDOS - IG.ITE_SALEXT - IFNULL(IG.ITE_SALREG,0) - (IFNULL(IG.ITE_QTPD_V,0) + IFNULL(IG.ITE_QTPD_F,0) + IFNULL(IG.ITE_QTPD_P,0)))\r\n                FROM ITEGER IG\r\n               WHERE IG.ITE_CODITE = FAT.COD_ITEM ) AS Estoque\r\n     FROM VW_FATURAMENTO FAT\r\n    WHERE $__timeFilter(DATA_E_HORA) \r\n    GROUP BY CONCAT(FAT.COD_ITEM ,' - ', FAT.ITEM)\r\n    ORDER BY  SUM(FAT.TOTAL_VENDA) DESC\r\n    LIMIT 10;",
+          "refId": "FATURAMENTO",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Ranking Faturamento (TOP 10)",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-RdYlGr"
+          },
+          "custom": {
+            "align": "left",
+            "cellOptions": {
+              "type": "gauge",
+              "valueDisplayMode": "text"
+            },
+            "inspect": false,
+            "width": 150
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Estoque"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 90
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Qtd. Venda"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 110
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Produto"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 618
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 11,
+        "x": 13,
+        "y": 9
+      },
+      "id": 10,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": true
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "dataset": "AUTCOM",
+          "datasource": {
+            "type": "mysql",
+            "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT CONCAT(FAT.COD_ITEM ,' - ', FAT.ITEM) as Produto,\r\n     SUM(FAT.QTD_ITEM) as \"Qtd. Venda\",\r\n     (   SELECT  SUM(IG.ITE_SALDOS - IG.ITE_SALEXT - IFNULL(IG.ITE_SALREG,0) - (IFNULL(IG.ITE_QTPD_V,0) + IFNULL(IG.ITE_QTPD_F,0) + IFNULL(IG.ITE_QTPD_P,0)))\r\n                FROM ITEGER IG\r\n               WHERE IG.ITE_CODITE = FAT.COD_ITEM) AS Estoque\r\n   FROM VW_FATURAMENTO FAT\r\n  WHERE $__timeFilter(FAT.DATA_E_HORA) \r\n  AND FAT.VALOR_UNITARIO > 20\r\n GROUP BY CONCAT(FAT.COD_ITEM ,' - ', FAT.ITEM)\r\norder by SUM(FAT.QTD_ITEM) desc\r\nlimit 10;",
+          "refId": "FATURAMENTO",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Ranking Quantidade (TOP 10)",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-green"
+              }
+            ]
+          },
+          "unit": "currencyBRL"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 22
+      },
+      "id": 6,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 0,
+        "minVizWidth": 8,
+        "namePlacement": "left",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "allValues"
+          ],
+          "fields": "/^FATURAMENTO$/",
+          "values": true
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "text"
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "dataset": "AUTCOM",
+          "datasource": {
+            "type": "mysql",
+            "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT NOME_VENDEDOR ,\r\n       SUM(TOTAL_VENDA) FATURAMENTO\r\n  FROM VW_FATURAMENTO\r\n  WHERE $__timeFilter(DATA_E_HORA) \r\n    -- and COD_VENDEDOR in ('A66','986','857','D58','594','560','620','598','555','561','D96','A32','A27','A25','918','B16','737','B77','B87','830','605','A57','B28','B64','C11','C09','946','A24','175','Z12','999')\r\nGROUP BY COD_VENDEDOR,NOME_VENDEDOR\r\nORDER BY FATURAMENTO DESC\r\nLIMIT 10;",
+          "refId": "FATURAMENTO_VENDEDOR",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Ranking Faturamento x Vendedor (TOP 10)",
+      "type": "bargauge"
+    }
+  ],
+  "preload": false,
+  "refresh": "30m",
+  "schemaVersion": 41,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Faturamento/Vendas",
+  "uid": "fc0608ae-bf90-4837-b937-be4cd39b9495",
+  "version": 96
+}

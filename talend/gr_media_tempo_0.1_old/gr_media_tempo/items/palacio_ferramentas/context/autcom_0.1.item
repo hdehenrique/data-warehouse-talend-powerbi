@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmi:id="_VHVVEBD9Ee6zcNdmYZF1AQ" confirmationNeeded="false" hide="false" name="Default">
+  <contextParameter xmi:id="_VHV8IBD9Ee6zcNdmYZF1AQ" comment="" name="AUTCOM_HOST" prompt="AUTCOM_HOST?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="AUTCOM_HOST"/>
+  <contextParameter xmi:id="_VHV8IRD9Ee6zcNdmYZF1AQ" comment="" name="AUTCOM_USER" prompt="AUTCOM_USER?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="AUTCOM_USER"/>
+  <contextParameter xmi:id="_VHV8IhD9Ee6zcNdmYZF1AQ" comment="" name="AUTCOM_PASSWORD" prompt="AUTCOM_PASSWORD?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="AUTCOM_PASSWORD"/>
+  <contextParameter xmi:id="_VHV8IxD9Ee6zcNdmYZF1AQ" comment="" name="AUTCOM_DB" prompt="AUTCOM_DB?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="AUTCOM_DB"/>
+  <contextParameter xmi:id="_VHV8JBD9Ee6zcNdmYZF1AQ" comment="" name="AUTCOM_PORT" prompt="AUTCOM_PORT?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="AUTCOM_PORT"/>
+</talendfile:ContextType>

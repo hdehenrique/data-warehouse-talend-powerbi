@@ -1,0 +1,45 @@
+{
+  "itemId" : "_hew2oBG_Ee6QvudTMXRsuA",
+  "contextList" : [ {
+    "contextName" : "Default",
+    "repoId" : "_9AQj4B43Ee2WMOY45k2Ahw",
+    "parameterList" : [ {
+      "id" : "_xBMgxArPEe6_haFX08IUvw",
+      "name" : "AUTCOM_DB"
+    }, {
+      "id" : "_xBMgwQrPEe6_haFX08IUvw",
+      "name" : "AUTCOM_HOST"
+    }, {
+      "id" : "_xBMgwwrPEe6_haFX08IUvw",
+      "name" : "AUTCOM_PASSWORD"
+    }, {
+      "id" : "_xBMgwgrPEe6_haFX08IUvw",
+      "name" : "AUTCOM_USER"
+    }, {
+      "id" : "_xBMgxQrPEe6_haFX08IUvw",
+      "name" : "AUTCOM_PORT"
+    } ]
+  }, {
+    "contextName" : "Default",
+    "repoId" : "_KxbNsB44Ee2WMOY45k2Ahw",
+    "parameterList" : [ {
+      "id" : "_xBfbtArPEe6_haFX08IUvw",
+      "name" : "DW_DB"
+    }, {
+      "id" : "_xBfbsQrPEe6_haFX08IUvw",
+      "name" : "DW_HOST"
+    }, {
+      "id" : "_xBfbswrPEe6_haFX08IUvw",
+      "name" : "DW_PASSWORD"
+    }, {
+      "id" : "_xBfbtQrPEe6_haFX08IUvw",
+      "name" : "DW_PORT"
+    }, {
+      "id" : "_xBfbsgrPEe6_haFX08IUvw",
+      "name" : "DW_USER"
+    }, {
+      "id" : "_xBfbtgrPEe6_haFX08IUvw",
+      "name" : "JDBC_PARAMETERS"
+    } ]
+  } ]
+}

@@ -1,0 +1,61 @@
+{
+  "itemId" : "_jTkGsgBKEfCGWcntHlZIIw",
+  "contextList" : [ {
+    "contextName" : "Default",
+    "repoId" : "_9AQj4B43Ee2WMOY45k2Ahw",
+    "parameterList" : [ {
+      "id" : "_e0KlFArOEe6_haFX08IUvw",
+      "name" : "AUTCOM_DB"
+    }, {
+      "id" : "_e0KlEQrOEe6_haFX08IUvw",
+      "name" : "AUTCOM_HOST"
+    }, {
+      "id" : "_e0KlEwrOEe6_haFX08IUvw",
+      "name" : "AUTCOM_PASSWORD"
+    }, {
+      "id" : "_e0KlFQrOEe6_haFX08IUvw",
+      "name" : "AUTCOM_PORT"
+    }, {
+      "id" : "_e0KlEgrOEe6_haFX08IUvw",
+      "name" : "AUTCOM_USER"
+    } ]
+  }, {
+    "contextName" : "Default",
+    "repoId" : "_35kMYBbREe-2iqr4N4NKOg",
+    "parameterList" : [ {
+      "id" : "_NGCbGkJ0Ee61sPNTyvkXaQ",
+      "name" : "POSTGRES_DB"
+    }, {
+      "id" : "_NGCbGUJ0Ee61sPNTyvkXaQ",
+      "name" : "POSTGRES_HOST"
+    }, {
+      "id" : "_NGCbHUJ0Ee61sPNTyvkXaQ",
+      "name" : "POSTGRES_PASSWORD"
+    }, {
+      "id" : "_NGCbHEJ0Ee61sPNTyvkXaQ",
+      "name" : "POSTGRES_PORT"
+    }, {
+      "id" : "_NGCbG0J0Ee61sPNTyvkXaQ",
+      "name" : "POSTGRES_USER"
+    } ]
+  }, {
+    "contextName" : "Default",
+    "repoId" : "__o2TMOQDEe6Gk9U6TA3XTw",
+    "parameterList" : [ {
+      "id" : "_w_SzZeQEEe6Gk9U6TA3XTw",
+      "name" : "WINSPARE_DB"
+    }, {
+      "id" : "_w_SzZuQEEe6Gk9U6TA3XTw",
+      "name" : "WINSPARE_HOST"
+    }, {
+      "id" : "_w_SzZ-QEEe6Gk9U6TA3XTw",
+      "name" : "WINSPARE_PORT"
+    }, {
+      "id" : "_w_SzaOQEEe6Gk9U6TA3XTw",
+      "name" : "WINSPARE_PWD"
+    }, {
+      "id" : "_w_SzaeQEEe6Gk9U6TA3XTw",
+      "name" : "WINSPARE_USER"
+    } ]
+  } ]
+}

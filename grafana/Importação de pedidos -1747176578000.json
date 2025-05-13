@@ -1,0 +1,1003 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 73,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "cd0d804d-247f-4e14-863d-cee8641c1867"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "green",
+            "mode": "fixed"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "min": 0,
+          "noValue": "Monitoramento de Importação de Pedidos",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#48a23c"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 21,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "valueSize": 25
+        },
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "dataset": "glpidb",
+          "datasource": {
+            "type": "mysql",
+            "uid": "cd0d804d-247f-4e14-863d-cee8641c1867"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "",
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+      },
+      "description": "Quantidade de pedidos integrados no período e origem selecionados",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red"
+              },
+              {
+                "color": "yellow",
+                "value": 150
+              },
+              {
+                "color": "green",
+                "value": 250
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 0,
+        "y": 2
+      },
+      "id": 20,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "dataset": "AUTCOM",
+          "datasource": {
+            "type": "mysql",
+            "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "  SELECT COUNT(*) as total\r\nFROM EXTGOR WHERE FGO_DH_IMP BETWEEN $__timeFrom() AND $__timeTo() \r\n-- >= DATE_SUB(CURDATE(), INTERVAL 0 DAY)\r\nAND \r\nCASE \r\n  WHEN '$TIPO_PED' = 'MAG' THEN IFNULL(FGO_CODORI, 0) = '032'\r\n  WHEN '$TIPO_PED' = 'HUB' THEN IFNULL(FGO_CODORI, 0) IN('03', '012', '025', '033')\r\n  WHEN '$TIPO_PED' = 'ANY' THEN IFNULL(FGO_CODORI, 0) NOT IN('032', '03', '012', '025', '033')\r\n  ELSE TRUE \r\nEND",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Total de integrações (Dia)",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "light-yellow",
+                "value": 1
+              },
+              {
+                "color": "semi-dark-red",
+                "value": 2
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 4,
+        "y": 2
+      },
+      "id": 19,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n    ROUND(concat (TIMESTAMPDIFF(MINUTE,max(FGO_DH_IMP),CURTIME()))) as geral_integracao_min\r\n   FROM EXTGOR\r\n  WHERE DATE_SUB(CURTIME(), INTERVAL 1 HOUR)",
+          "refId": "total_itens",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Última integração GERAL em minuto",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "yellow",
+                "value": 10
+              },
+              {
+                "color": "red",
+                "value": 60
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 8,
+        "y": 2
+      },
+      "id": 16,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "dataset": "AUTCOM",
+          "datasource": {
+            "type": "mysql",
+            "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\nround(concat(TIMESTAMPDIFF(MINUTE, max(IF(IFNULL(FGO_CODORI, 0) = '032', FGO_DH_IMP, 0)), CURTIME()))) as magento     \r\nFROM EXTGOR\r\nWHERE DATE_SUB(CURTIME(), INTERVAL 1 HOUR);",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Última integração Magento em minuto",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "yellow",
+                "value": 10
+              },
+              {
+                "color": "red",
+                "value": 60
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 12,
+        "y": 2
+      },
+      "id": 17,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "dataset": "AUTCOM",
+          "datasource": {
+            "type": "mysql",
+            "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n     round(concat(TIMESTAMPDIFF(MINUTE, max(IF(IFNULL(FGO_CODORI, 0) IN('03', '012', '025', '033'), FGO_DH_IMP, 0)), CURTIME()))) as hub\r\nFROM EXTGOR\r\nWHERE DATE_SUB(CURTIME(), INTERVAL 1 HOUR);",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Última Integração Hub em minuto",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "yellow",
+                "value": 10
+              },
+              {
+                "color": "red",
+                "value": 60
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 16,
+        "y": 2
+      },
+      "id": 18,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "dataset": "AUTCOM",
+          "datasource": {
+            "type": "mysql",
+            "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n    round(concat(TIMESTAMPDIFF(MINUTE, max(IF(IFNULL(FGO_CODORI, 0) NOT IN('032', '03', '012', '025', '033'), FGO_DH_IMP, 0)), CURTIME()))) as anymarket\r\nFROM EXTGOR\r\nWHERE DATE_SUB(CURTIME(), INTERVAL 1 HOUR);",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Última integração Anymarket em minuto",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red"
+              },
+              {
+                "color": "yellow",
+                "value": 50
+              },
+              {
+                "color": "green",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 20,
+        "y": 2
+      },
+      "id": 15,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Media integrações Hora$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "dataset": "AUTCOM",
+          "datasource": {
+            "type": "mysql",
+            "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n    ROUND(\r\n        (\r\n       \t SELECT COUNT(*) FROM EXTGOR WHERE FGO_DH_IMP >= DATE_SUB(CURTIME(), INTERVAL 1 HOUR)\r\n            AND \r\n           \tCASE \r\n\t           \tWHEN '$TIPO_PED' = 'MAG' THEN IFNULL(FGO_CODORI, 0) = '032'\r\n\t           \tWHEN '$TIPO_PED' = 'HUB' THEN IFNULL(FGO_CODORI, 0) IN('03', '012', '025', '033')\r\n\t           \tWHEN '$TIPO_PED' = 'ANY' THEN IFNULL(FGO_CODORI, 0) NOT IN('032', '03', '012', '025', '033')\r\n\t           \tELSE TRUE \r\n           \tEND\r\n        )\r\n        /\r\n        (\r\n            SELECT COUNT(*)/7\r\n            FROM EXTGOR WHERE FGO_DH_IMP >= DATE_SUB(CURTIME(), INTERVAL 7 DAY)\r\n            AND CONCAT(LPAD(HOUR(FGO_DH_IMP), 2, 0), ' ', LPAD(MINUTE(FGO_DH_IMP), 2, 0)) >= CONCAT(LPAD(HOUR(DATE_SUB(CURTIME(), INTERVAL 1 HOUR)), 2, 0), ' ', LPAD(MINUTE(DATE_SUB(CURTIME(), INTERVAL 1 HOUR)), 2, 0))\r\n            AND CONCAT(LPAD(HOUR(FGO_DH_IMP), 2, 0), ' ', LPAD(MINUTE(FGO_DH_IMP), 2, 0)) <= CONCAT(LPAD(HOUR(CURTIME()), 2, 0), ' ', LPAD(MINUTE(CURTIME()), 2, 0))\r\n            AND \r\n           \tCASE \r\n\t           \tWHEN '$TIPO_PED'  = 'MAG' THEN IFNULL(FGO_CODORI, 0) = '032'\r\n\t           \tWHEN '$TIPO_PED' = 'HUB' THEN IFNULL(FGO_CODORI, 0) IN('03', '012', '025', '033')\r\n\t           \tWHEN '$TIPO_PED' = 'ANY' THEN IFNULL(FGO_CODORI, 0) NOT IN('032', '03', '012', '025', '033')\r\n\t           \tELSE TRUE \r\n           \tEND\r\n        )*100, 2\r\n    ) AS \"Media integrações Hora\"",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Media integrações Hora do Dia",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 4,
+        "x": 0,
+        "y": 8
+      },
+      "id": 14,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT -- COUNT(*) AS \"Total Dia\",\r\n\tSUM(IF(IFNULL(FGO_CODORI, 0) = '032', 1, 0)) AS \"Magento\",\r\n\tSUM(IF(IFNULL(FGO_CODORI, 0) IN('03', '012', '025', '033'), 1, 0)) AS \"HUB\",\r\n\tSUM(IF(IFNULL(FGO_CODORI, 0) NOT IN('032', '03', '012', '025', '033'), 1, 0)) AS \"Anymarket\"\r\nFROM EXTGOR \r\nWHERE FGO_DH_IMP  BETWEEN $__timeFrom() AND $__timeTo() \r\n-- >= DATE_SUB(CURDATE(), INTERVAL 0 DAY)",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
+          "table": "glpi_agents",
+          "timeColumn": "last_contact",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Total de integrações por canal (Dia)",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 25,
+            "gradientMode": "scheme",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red"
+              },
+              {
+                "color": "yellow",
+                "value": 5
+              },
+              {
+                "color": "green",
+                "value": 10
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 20,
+        "x": 4,
+        "y": 8
+      },
+      "id": 13,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "right",
+          "showLegend": false
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "dataset": "AUTCOM",
+          "datasource": {
+            "type": "mysql",
+            "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select cast(intervalo_10min as datetime) as time, pedido  FROM\r\n(\r\n  SELECT\r\n    DATE_FORMAT( \r\n  \tDATE_FORMAT(DATE_ADD(FGO_DH_IMP, INTERVAL 3 HOUR), '%Y-%m-%d %H:%i') - INTERVAL MOD(MINUTE(DATE_ADD(FGO_DH_IMP, INTERVAL 3 HOUR)), 10) MINUTE\r\n  \t, '%Y-%m-%d %H:%i')AS intervalo_10min,\r\n    COUNT(FGO_SEQFGO) AS pedido\r\nFROM\r\n    EXTGOR\r\nWHERE\r\n    FGO_DH_IMP BETWEEN $__timeFrom() AND $__timeTo() \r\n    AND \r\n    CASE \r\n      WHEN '$TIPO_PED' = 'MAG' THEN IFNULL(FGO_CODORI, 0) = '032'\r\n      WHEN '$TIPO_PED' = 'HUB' THEN IFNULL(FGO_CODORI, 0) IN('03', '012', '025', '033')\r\n      WHEN '$TIPO_PED' = 'ANY' THEN IFNULL(FGO_CODORI, 0) NOT IN('032', '03', '012', '025', '033')\r\n      ELSE TRUE \r\n    END\r\n   GROUP BY\r\n    intervalo_10min\r\nORDER BY\r\n    intervalo_10min\r\n    ) TB",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Integração de pedidos por minutos",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red"
+              },
+              {
+                "color": "yellow",
+                "value": 10
+              },
+              {
+                "color": "semi-dark-green",
+                "value": 15
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 20,
+        "x": 4,
+        "y": 16
+      },
+      "id": 3,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "dataset": "AUTCOM",
+          "datasource": {
+            "type": "mysql",
+            "uid": "bfa9588b-a492-4c79-a959-ac5f9880cc28"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select \r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 00 THEN 1 ELSE 0 END) as \"00:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 01 THEN 1 ELSE 0 END) as \"1:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 02 THEN 1 ELSE 0 END) as \"2:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 03 THEN 1 ELSE 0 END) as \"3:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 04 THEN 1 ELSE 0 END) as \"4:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 05 THEN 1 ELSE 0 END) as \"5:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 06 THEN 1 ELSE 0 END) as \"6:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 07 THEN 1 ELSE 0 END) as \"7:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 08 THEN 1 ELSE 0 END) as \"8:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 09 THEN 1 ELSE 0 END) as \"9:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 10 THEN 1 ELSE 0 END) as \"10:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 11 THEN 1 ELSE 0 END) as \"11:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 12 THEN 1 ELSE 0 END) as \"12:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 13 THEN 1 ELSE 0 END) as \"13:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 14 THEN 1 ELSE 0 END) as \"14:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 15 THEN 1 ELSE 0 END) as \"15:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 16 THEN 1 ELSE 0 END) as \"16:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 17 THEN 1 ELSE 0 END) as \"17:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 18 THEN 1 ELSE 0 END) as \"18:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 19 THEN 1 ELSE 0 END) as \"19:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 20 THEN 1 ELSE 0 END) as \"20:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 21 THEN 1 ELSE 0 END) as \"21:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 22 THEN 1 ELSE 0 END) as \"22:00\",\r\nsum(CASE WHEN LPAD(HOUR(FGO_DH_IMP), 2, 0) = 23 THEN 1 ELSE 0 END) as \"23:00\",\r\nmax(FGO_DH_IMP) ultimo_pedido,\r\n(SELECT FORMAT((SELECT count(*) FROM EXTGOR WHERE FGO_DH_IMP >= DATE_SUB(CURTIME(), INTERVAL 1 HOUR))\r\n/\r\n(SELECT COUNT(*)/7\r\n   FROM EXTGOR\r\n  WHERE FGO_DH_IMP >=DATE_SUB(CURTIME(), INTERVAL 7 DAY)\r\n    AND CONCAT(LPAD(HOUR(FGO_DH_IMP), 2, 0), ' ', LPAD(MINUTE(FGO_DH_IMP), 2, 0)) >= CONCAT(LPAD(HOUR(DATE_SUB(CURTIME(), INTERVAL 1 HOUR)), 2, 0), ' ', LPAD(MINUTE(DATE_SUB(CURTIME(), INTERVAL 1 HOUR)), 2, 0))\r\n    AND CONCAT(LPAD(HOUR(FGO_DH_IMP), 2, 0), ' ', LPAD(MINUTE(FGO_DH_IMP), 2, 0)) <= CONCAT(LPAD(HOUR(CURTIME()), 2, 0), ' ', LPAD(MINUTE(CURTIME()), 2, 0)))*100, 2) AS PERCENT) media_7_dias\r\nfrom EXTGOR where FGO_DH_IMP >= CURRENT_DATE()\r\n    AND \r\n    CASE \r\n      WHEN '$TIPO_PED' = 'MAG' THEN IFNULL(FGO_CODORI, 0) = '032'\r\n      WHEN '$TIPO_PED' = 'HUB' THEN IFNULL(FGO_CODORI, 0) IN('03', '012', '025', '033')\r\n      WHEN '$TIPO_PED' = 'ANY' THEN IFNULL(FGO_CODORI, 0) NOT IN('032', '03', '012', '025', '033')\r\n      ELSE TRUE \r\n    END",
+          "refId": "Monitoramento",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Consolidado de integrações por hora (Dia)",
+      "type": "bargauge"
+    }
+  ],
+  "preload": false,
+  "refresh": "5s",
+  "schemaVersion": 41,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "ANY",
+          "value": "ANY"
+        },
+        "includeAll": false,
+        "name": "TIPO_PED",
+        "options": [
+          {
+            "selected": false,
+            "text": "MAG",
+            "value": "MAG"
+          },
+          {
+            "selected": false,
+            "text": "HUB",
+            "value": "HUB"
+          },
+          {
+            "selected": true,
+            "text": "ANY",
+            "value": "ANY"
+          },
+          {
+            "selected": false,
+            "text": "TOD",
+            "value": "TOD"
+          }
+        ],
+        "query": "MAG, HUB, ANY, TOD",
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Gestão à vista - Importação de pedidos",
+  "uid": "d5e5a803-84cd-4ec2-83c4-dd1a5c58874b",
+  "version": 124
+}

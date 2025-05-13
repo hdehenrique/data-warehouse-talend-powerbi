@@ -1,0 +1,42 @@
+{
+  "itemId" : "_EV2W8LO2Ee6TMqS3PJbunA",
+  "contextList" : [ {
+    "contextName" : "Default",
+    "repoId" : "_9AQj4B43Ee2WMOY45k2Ahw",
+    "parameterList" : [ {
+      "id" : "_xBMgxArPEe6_haFX08IUvw",
+      "name" : "AUTCOM_DB"
+    }, {
+      "id" : "_xBMgwQrPEe6_haFX08IUvw",
+      "name" : "AUTCOM_HOST"
+    }, {
+      "id" : "_xBMgwwrPEe6_haFX08IUvw",
+      "name" : "AUTCOM_PASSWORD"
+    }, {
+      "id" : "_xBMgxQrPEe6_haFX08IUvw",
+      "name" : "AUTCOM_PORT"
+    }, {
+      "id" : "_xBMgwgrPEe6_haFX08IUvw",
+      "name" : "AUTCOM_USER"
+    } ]
+  }, {
+    "contextName" : "Default",
+    "repoId" : "_arWXYIa9Ee2hJc2Spp0xPw",
+    "parameterList" : [ {
+      "id" : "_xBro8grPEe6_haFX08IUvw",
+      "name" : "POSTGRES_DB"
+    }, {
+      "id" : "_xBro8QrPEe6_haFX08IUvw",
+      "name" : "POSTGRES_HOST"
+    }, {
+      "id" : "_xBro9QrPEe6_haFX08IUvw",
+      "name" : "POSTGRES_PASSWORD"
+    }, {
+      "id" : "_xBro9ArPEe6_haFX08IUvw",
+      "name" : "POSTGRES_PORT"
+    }, {
+      "id" : "_xBro8wrPEe6_haFX08IUvw",
+      "name" : "POSTGRES_USER"
+    } ]
+  } ]
+}
