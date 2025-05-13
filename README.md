@@ -83,37 +83,6 @@ Projeto idealizado, desenvolvido e implantado integralmente, com as seguintes re
 
 ---
 
-## 📁 Estrutura do Repositório
-
-bi-data-warehouse-palacio/
-├── README.md
-├── docs/
-│   ├── antes/
-│   │   ├── descricao.md
-│   │   └── imagens/
-│   │       └── arquitetura_antiga.png
-│   └── depois/
-│       ├── descricao.md
-│       └── imagens/
-│           └── arquitetura_nova.png
-├── etl/
-│   ├── agendamentos/
-│   │   └── exemplo_cronjob.txt
-│   ├── scripts/
-│   │   └── exemplo_etl_script.py
-│   └── talend_jobs/
-├── dashboards/
-│   ├── grafana/
-│   ├── powerbi/
-│   └── imagens/
-└── modelos/
-    ├── dicionario_dados.xlsx
-    └── modelagem_dimensional.pdf
-
-
-
----
-
 ## ✅ Resultados
 
 - Redução de carga sobre o banco de produção
