@@ -11,7 +11,8 @@ Este repositório documenta a evolução da arquitetura de dados da empresa **Pa
 
 ### Arquitetura Anterior
 
-![Arquitetura Anterior](docs/antes/imagens/arquitetura_antiga.png)
+![image](https://github.com/user-attachments/assets/401eddd9-2eb4-44d2-9569-2cefe9eee32c)
+
 
 ### Descrição
 
@@ -28,7 +29,8 @@ Antes da reestruturação, a área de BI da empresa operava com:
 
 ### Nova Arquitetura
 
-![Nova Arquitetura](docs/depois/imagens/arquitetura_nova.png)
+![image](https://github.com/user-attachments/assets/49db6ff6-fbb8-4858-a8ec-5bd47a522064)
+
 
 ### Solução Implantada
 
